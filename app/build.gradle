@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "rocks.teagantotally.homqtt_assistant"
+        minSdkVersion 23
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    dataBinding {
+        enabled = true;
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    compile group: 'org.greenrobot', name: 'eventbus', version: '3.0.0'
+    // Dagger 2.0 Deps
+    compile group: 'com.google.dagger', name: 'dagger', version: '2.4'
+    compile group: 'com.google.dagger', name: 'dagger-compiler', version: '2.4'
+
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+    compile 'com.google.code.gson:gson:2.8.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    // Support libraries
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:recyclerview-v7:26.+'
+    compile 'com.android.support:design:26.+'
+    compile 'com.android.support:multidex:1.0.1'
+    testCompile 'junit:junit:4.12'
+}
